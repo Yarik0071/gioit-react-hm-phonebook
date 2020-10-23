@@ -1,0 +1,23 @@
+.form{
+    width: 300px;
+    height: 150px;
+    padding: 20px 0 0 30px;
+    border: 1px solid black;
+}
+
+.formInput {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+}
+
+.buttonSubmit {
+    width: 150px;
+    height: 30px;
+    background-color: black;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
