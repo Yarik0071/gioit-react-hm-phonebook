@@ -1,4 +1,5 @@
 import React from "react"
+import PropTypes from 'prop-types'
 
 export default function Filter({ handleFilter }) {
 return (
@@ -13,4 +14,8 @@ return (
       ></input>
       </label>
 )
+}
+
+Filter.propTypes = {
+  handleFilter: PropTypes.func.isRequired
 }

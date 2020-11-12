@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import PropTypes from 'prop-types'
 
 export default class ContactForm extends Component {
 
@@ -45,33 +46,36 @@ export default class ContactForm extends Component {
   render() {
     const { name, number } = this.state
     return (
-      <form 
-      className="form"
-      onSubmit = {this.handleSubmit}
-      >
-          <label
-          >
-            Name
-            <input 
+      <form className="form" onSubmit={this.handleSubmit}>
+        <label>
+          Name
+          <input
             className="formInput"
             name="name"
             type="text"
             value={name}
             onChange={this.handleChange}
-            ></input>
-          </label>
-          <label>
-            Number
-          <input 
+          ></input>
+        </label>
+        <label>
+          Number
+          <input
             className="formInput"
             type="tel"
             name="number"
             value={number}
             onChange={this.handleChange}
-            ></input>
-          </label>
-        <button type="submit" className="buttonSubmit">Add contact</button> 
-        </form>
-    )
+          ></input>
+        </label>
+        <button type="submit" className="buttonSubmit">
+          Add contact
+        </button>
+      </form>
+    );
   }
+}
+
+ContactForm.propTypes = {
+  contacts: PropTypes.arrayOf(PropTypes.object.isRequired),
+  addContact: PropTypes.func.isRequired
 }
