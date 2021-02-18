@@ -1,0 +1,54 @@
+.logotype-appear {
+    opacity: 0;
+    transform: translateX(-100%);
+}
+
+.logotype-appear-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: all 500ms linear;
+}
+
+.filter-enter {
+    opacity: 0;
+    transform: scale(0);
+}
+
+.filter-enter-active {
+    opacity: 1;
+    transform: scale(1);
+    transition: all 250ms linear;
+}
+
+.filter-exit {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.filter-exit-active {
+    opacity: 0;
+    transform: scale(0);
+    transition: all 250ms linear;
+}
+
+.listItem-enter {
+    opacity: 0;
+    transform: translateX(-100%);
+}
+
+.listItem-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: all 250ms linear;
+}
+
+.listItem-exit {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.listItem-exit-active {
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: all 250ms linear;
+}

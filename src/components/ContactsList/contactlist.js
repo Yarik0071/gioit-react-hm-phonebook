@@ -1,13 +1,20 @@
 import React from "react"
 import PropTypes from 'prop-types'
+import {CSSTransition, TransitionGroup} from 'react-transition-group'
+
+import "../../css/move.css"
 
 
-export default function ContactList({ contacts, remuveContact}) {
+export default function ContactList({ contacts, remuveContact }) {
   return (
     <>
-      <ul className="contactList">
-        {" "}
+      <TransitionGroup component='ul' className="contactList">
         {contacts.map(({ id, name, number }) => (
+          <CSSTransition 
+          key={id}
+          timeout={250}
+          classNames="listItem"
+          >
           <li className="contactListItem" key={id} id={id}>
             <p>
               {name}: {number}
@@ -19,11 +26,12 @@ export default function ContactList({ contacts, remuveContact}) {
                 remuveContact(id);
               }}
             >
-              delete
+              X
             </button>
           </li>
+          </CSSTransition>
         ))}
-      </ul>
+      </TransitionGroup>
     </>
   );
 }

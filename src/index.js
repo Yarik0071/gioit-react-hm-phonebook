@@ -1,13 +1,17 @@
 import React, {Component} from "react";
 import ReactDOM from 'react-dom';
+import {CSSTransition} from 'react-transition-group'
 import {v4 as uuidv4} from 'uuid';
 import ContactList from "./components/ContactsList/contactlist.js"
 import ContactForm from "./components/ContactForm/contactform.js"
 import Filter from "./components/Filter/filter.js"
 
+
 import "./components/ContactForm/contactform.css"
 import "./components/ContactsList/contactlist.css"
 import "./components/Filter/filter.css"
+import "./css/styles.css"
+import "./css/move.css"
 
 class App extends Component {
   state = {
@@ -78,14 +82,31 @@ class App extends Component {
     return (
       <>
         <div>
-          <h1>Phonebook</h1>
+          <CSSTransition
+            in={true}
+            appear={true}
+            timeout={500}
+            classNames="logotype"
+          >
+            <h1 className="logo">Phonebook</h1>
+          </CSSTransition>
+
           <ContactForm
             addContact={this.addContact}
             contacts={this.state.contacts}
           />
 
           <h2>Contacts</h2>
-          <Filter handleFilter={this.handleFilter} />
+      
+            <CSSTransition
+            in={this.state.contacts.length > 1}
+            classNames="filter"
+            timeout={250}
+            unmountOnExit
+            >
+              <Filter handleFilter={this.handleFilter} />
+            </CSSTransition>
+
           {filterContact.length > 0 && (
             <ContactList
               contacts={filterContact}

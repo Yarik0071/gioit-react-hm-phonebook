@@ -5,7 +5,8 @@ export default class ContactForm extends Component {
 
   state = {
     name: '',
-    number: ''
+    number: '',
+    showAlert: false
   }
 
   handleChange = e => {
@@ -17,13 +18,22 @@ export default class ContactForm extends Component {
     })
   }
 
+  changeAlert = () => {
+    this.setState((prevState) => {
+      return {
+        showAlert: !prevState.showAlert,
+      };
+    });
+  }
+
   filterName = () => {
     const { contacts, addContact } = this.props
     const { name, number } = this.state
 
     let initialValue = contacts.filter(item => item.name === name)
     if(initialValue.length > 0) {
-      alert(`${name} is already in contacts`)
+      this.changeAlert()
+      setTimeout(() => { this.changeAlert() }, 4000);
     } else {
       addContact(name, number)
     }
@@ -44,8 +54,12 @@ export default class ContactForm extends Component {
   }
 
   render() {
-    const { name, number } = this.state
+    const { name, number, showAlert } = this.state
     return (
+      <>
+      {showAlert && 
+      <div className="alert"><p>Contact is already exist</p></div>
+      }
       <form className="form" onSubmit={this.handleSubmit}>
         <label>
           Name
@@ -71,6 +85,7 @@ export default class ContactForm extends Component {
           Add contact
         </button>
       </form>
+      </>
     );
   }
 }

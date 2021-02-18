@@ -1,20 +1,24 @@
 .contactList {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
 }
 
 .contactListItem {
+    margin: 5px;
+    padding: 0 10px;
     width: 300px;
     display: flex;
     justify-content: space-between;
+    border-radius: 5px;
+    box-shadow: 1px 1px 10px 1px #000000;
 }
 
 .buttonDelete {
-    width: 70px;
+    width: 30px;
     margin: 10px 0;
-    line-height: 30px;
-    background-color: black;
+    line-height: 28px;
+    background-color: #db1515;
     color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 3px;
 }
