@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import PropTypes from 'prop-types'
+import { CSSTransition } from "react-transition-group"
 
 export default class ContactForm extends Component {
 
@@ -33,7 +34,7 @@ export default class ContactForm extends Component {
     let initialValue = contacts.filter(item => item.name === name)
     if(initialValue.length > 0) {
       this.changeAlert()
-      setTimeout(() => { this.changeAlert() }, 4000);
+      setTimeout(() => { this.changeAlert() }, 3000);
     } else {
       addContact(name, number)
     }
@@ -57,9 +58,14 @@ export default class ContactForm extends Component {
     const { name, number, showAlert } = this.state
     return (
       <>
-      {showAlert && 
-      <div className="alert"><p>Contact is already exist</p></div>
-      }
+     <CSSTransition 
+     classNames='alertAnimation'
+     in={showAlert} 
+     timeout={250}
+     unmountOnExit
+     >
+       <div className="alert"><p>Contact is already exist</p></div>
+       </CSSTransition>
       <form className="form" onSubmit={this.handleSubmit}>
         <label>
           Name

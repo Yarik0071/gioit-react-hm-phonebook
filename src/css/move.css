@@ -52,3 +52,25 @@
     transform: translateX(-100%);
     transition: all 250ms linear;
 }
+
+.alertAnimation-enter {
+    opacity: 0;
+    transform: translateX(100%);
+}
+
+.alertAnimation-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: all 250ms linear;
+}
+
+.alertAnimation-exit {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.alertAnimation-exit-active {
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 250ms linear;
+}
